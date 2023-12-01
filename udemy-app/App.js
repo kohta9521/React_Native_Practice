@@ -1,7 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 
 export default function App() {
+  function hello() {
+    alert('Hello World!');
+  };
+
   return (
     <View style={styles.container}>
       {/* <Text>Hello World!</Text> */}
@@ -9,7 +13,8 @@ export default function App() {
       <View style={styles.viewStyle}>
         <Text>test</Text>
       </View> */}
-      <Image resizeMode='contain' style={styles.profileImage} source={require('./assets/profile_icon.png')} />
+      {/* <Image resizeMode='contain' style={styles.profileImage} source={require('./assets/profile_icon.png')} /> */}
+      <Button title='greeting' onPress={hello}>!</Button>
       <StatusBar style="auto" />
     </View>
   );
