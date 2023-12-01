@@ -1,9 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity } from 'react-native';
 
 export default function App() {
   function hello() {
-    alert('Hello World!');
+    Alert.alert(
+      "挨拶",
+      'このまま処理を続行しますか？',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          styles: 'cancel'
+        },
+        {
+          text: 'OK',
+          onPress: () => console.log('OK Pressed'),
+        }
+      ]
+    );
   };
 
   return (
@@ -14,7 +28,19 @@ export default function App() {
         <Text>test</Text>
       </View> */}
       {/* <Image resizeMode='contain' style={styles.profileImage} source={require('./assets/profile_icon.png')} /> */}
-      <Button title='greeting' onPress={hello}>!</Button>
+      {/* <Button title='greeting' onPress={hello}>!</Button> */}
+      <View style={styles.baseView}>
+        <Image resizeMethod='contain' style={styles.profileImage} source={require('./assets/profile_icon.png')} />
+          <View style={styles.textColumnView}>
+            <Text style={styles.nameText}>Tanaka Tarou</Text>
+            <Text style={styles.detailText}>Hobby: running</Text>
+          </View>
+
+          <TouchableOpacity style={styles.button} onPress={hello}>
+            <Text style={styles.buttonText}>greet!</Text>
+          </TouchableOpacity>
+        {/* <Button title='greet!' onPress={hello}></Button> */}
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -26,25 +52,45 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text: {
-    color: 'white',
-    fontSize: 30,
-    fontWeight: 'bold',
-    backgroundColor: 'black',
+  baseView: {
+    flexDirection: 'row',
+    borderWidth: 2,
+    width: '90%',
+    height: 120,
     padding: 10,
   },
-  textRed: {
-    color: "red",
+  nameText: {
+    color: 'black',
+    fontSize: 20,
+    fontWeight: 'bold',
+    padding: 10,
   },
-  viewStyle: {
-    width: 200,
-    height: 100,
-    backgroundColor: 'blue',
-    alignItems: 'center',
-    justifyContent: 'center',
+  detailText: {
+    fontSize: 16,
+    color: 'gray',
+    paddingLeft: 14,
+  },
+  textColumnView: {
+    flex: 2,
   },
   profileImage: {
+    flex: 1,
     width: 100,
     height: 100,
+  },
+  button: {
+    flex: 1,
+    alignSelf: 'center',
+    backgroundColor: 'gray',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 36,
+    borderRadius: 18,
+    width: 80,
+
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
   }
 });
