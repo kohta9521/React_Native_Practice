@@ -1,11 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, TextInput } from 'react-native';
+
+// components import
+import Cafe from './src/components/Cafe';
+import PizzaTranlator from './src/components/PizzaTranslator';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>hello</Text>
+      {/* <Cafe />
+      <Cat /> */}
+      {/* <Cafe /> */}
+      <PizzaTranlator />
     </View>
   );
 }
