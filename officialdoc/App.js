@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Image, ScrollView, TextInput } from 'react-nati
 // components import
 import Cafe from './src/components/Cafe';
 import PizzaTranlator from './src/components/PizzaTranslator';
+import Logo from './src/components/Logo';
 
 export default function App() {
   return (
@@ -12,7 +13,8 @@ export default function App() {
       {/* <Cafe />
       <Cat /> */}
       {/* <Cafe /> */}
-      <PizzaTranlator />
+      {/* <PizzaTranlator /> */}
+      <Logo />
     </View>
   );
 }
