@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import {  Text, View, SafeAreaView } from 'react-native';
+import {  Text, View, SafeAreaView, FlatList, StyleSheet } from 'react-native';
 import tx from 'twrnc';
 import Header from './components/Header';
 
@@ -16,14 +16,42 @@ export default function App() {
     getUser();
   }, []);
 
+  const renderitem = ({ item }) => (
+    <View style={styles.item}>
+      <Text>{item.name}</Text>
+    </View>
+  )
+
 
   return (
-    <View>
+    <View style={styles.container}>
       <Header title="ユーザー一覧" />
-      {users.map((user) => (
+      <FlatList
+        data={users}
+        renderItem={renderitem}
+        keyExtractor={(item) => item.id}
+        ItemSeparatorComponent={() => (
+          <View
+            style={{
+              backgroundColor: 'lightgray',
+              height: 1,
+            }}
+          >
+          </View>
+        )}
+      />
+      {/* {users.map((user) => (
         <Text key={user.id}>{user.name}</Text>
-      ))}
+      ))} */}
     </View>
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  item: {
+    padding: 40,
+  },
+});
