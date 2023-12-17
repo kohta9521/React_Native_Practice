@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import {  Text, View, SafeAreaView, FlatList, StyleSheet } from 'react-native';
+import {  Text, View,Alert,  SafeAreaView, FlatList, StyleSheet, TouchableOpacity, Pressable, Image } from 'react-native';
 import tx from 'twrnc';
 import Header from './components/Header';
 
@@ -17,9 +17,20 @@ export default function App() {
   }, []);
 
   const renderitem = ({ item }) => (
-    <View style={styles.item}>
-      <Text>{item.name}</Text>
-    </View>
+    <Pressable
+      onPress={() => {
+        Alert.alert('タップされました');
+      }}
+    >
+      <View style={styles.item}>
+        <Image
+          style={styles.avatar}
+          source={{ uri: 'https://i.pravatar.cc/150' }}
+        />
+        <Text>{item.name}</Text>
+      </View>
+
+    </Pressable>
   )
 
 
@@ -52,6 +63,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   item: {
+    flexDirection: 'row',
+    alignItems: 'center',
     padding: 40,
+    backgroundColor: '#88cb7f',
+  },
+  avatar: {
+    height: 50,
+    width: 50,
+    borderRadius: 30,
+    marginRight: 8,
   },
 });
